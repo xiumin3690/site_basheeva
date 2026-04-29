@@ -1,0 +1,59 @@
+{% extends 'olga/base.html' %}
+
+{% block title %}Заказ №{{ order.order_number }}{% endblock %}
+
+{% block content %}
+<div class="order-detail">
+    <div class="order-header">
+        <h1>Заказ №{{ order.order_number }}</h1>
+        <div class="order-status status-{{ order.order_status }}">{{ order.get_order_status_display }}</div>
+    </div>
+    
+    <div class="order-info">
+        <div class="info-section">
+            <h3>Информация о покупателе</h3>
+            <p><strong>Имя:</strong> {{ order.users.name }}</p>
+            <p><strong>Email:</strong> {{ order.users.email }}</p>
+            <p><strong>Телефон:</strong> {{ order.users.phone_number }}</p>
+        </div>
+        
+        <div class="info-section">
+            <h3>Информация о заказе</h3>
+            <p><strong>Дата оформления:</strong> {{ order.registration_date|date:"d.m.Y H:i" }}</p>
+            <p><strong>Способ оплаты:</strong> {{ order.get_payment_method_display }}</p>
+            <p><strong>Способ доставки:</strong> {{ order.get_shipping_method_display }}</p>
+            <p><strong>Адрес доставки:</strong> {{ order.delivery_address }}</p>
+            <p><strong>Сумма заказа:</strong> {{ order.order_amount }} ₽</p>
+        </div>
+        
+        <div class="info-section">
+            <h3>Товары в заказе</h3>
+            {% if order.product.all %}
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th>Товар</th>
+                            <th>Цена</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in order.product.all %}
+                            <tr>
+                                <td><a href="{% url 'olga:product_detail' product.pk %}">{{ product.name }}</a></td>
+                                <td>{{ product.price }} ₽</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="empty">В этом заказе нет товаров.</p>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="order-actions">
+        <a href="{% url 'olga:order_update' order.pk %}" class="btn btn-secondary">Редактировать заказ</a>
+        <a href="{% url 'olga:order_list' %}" class="btn btn-outline">Назад к заказам</a>
+    </div>
+</div>
+{% endblock %}

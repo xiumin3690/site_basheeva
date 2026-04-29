@@ -1,0 +1,40 @@
+{% extends 'olga/base.html' %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block content %}
+<div class="category-detail">
+    <div class="category-header">
+        <h1>{{ category.name }}</h1>
+        <p class="category-description">{{ category.description }}</p>
+        <div class="category-actions">
+            <a href="{% url 'olga:category_update' category.pk %}" class="btn btn-secondary">Редактировать категорию</a>
+            <a href="{% url 'olga:category_list' %}" class="btn btn-outline">Назад к категориям</a>
+        </div>
+    </div>
+    
+    <div class="products-section">
+        <h3>Товары в этой категории</h3>
+        {% if products %}
+            <div class="product-grid">
+                {% for product in products %}
+                    <div class="product-card">
+                        <a href="{% url 'olga:product_detail' product.pk %}">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <div class="no-image">Нет фото</div>
+                            {% endif %}
+                            <h3>{{ product.name }}</h3>
+                            <p class="price">{{ product.price }} ₽</p>
+                            <p class="quantity">В наличии: {{ product.quantity }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="empty">В этой категории пока нет товаров.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

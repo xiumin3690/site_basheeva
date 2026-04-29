@@ -1,0 +1,38 @@
+{% extends 'olga/base.html' %}
+{% load static %}
+
+{% block title %}Главная - MEN'S STORE{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Добро пожаловать в MEN'S STORE</h1>
+        <a href="{% url 'olga:product_list' %}" class="btn-hero">Смотреть каталог</a>
+    </div>
+</section>
+
+<section class="products-section">
+    <h2>Новинки</h2>
+    <div class="product-grid">
+        {% for product in products %}
+            <div class="product-card">
+                <a href="{% url 'olga:product_detail' product.pk %}" style="text-decoration: none; color: inherit;">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <div class="no-image">Нет изображения</div>
+                    {% endif %}
+                    <h3>{{ product.name }}</h3>
+                    <p class="price">{{ product.price }} ₽</p>
+                    <p class="quantity">В наличии: {{ product.quantity }}</p>
+                </a>
+                <button class="btn-add-to-cart" data-id="{{ product.id }}">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+            </div>
+        {% empty %}
+            <p>Товары не найдены</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

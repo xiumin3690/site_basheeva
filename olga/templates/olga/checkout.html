@@ -1,0 +1,114 @@
+{% extends 'olga/base.html' %}
+
+{% block title %}Оформление заказа - MEN'S STORE{% endblock %}
+
+{% block content %}
+<div class="checkout-page">
+    <h2>Оформление заказа</h2>
+    
+    <div class="checkout-flex">
+        <div class="checkout-form-col">
+            <form method="post" class="checkout-form">
+                {% csrf_token %}
+                
+                <div class="form-card">
+                    <h3>1. Контактные данные</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Фамилия*</label>
+                            <input type="text" name="last_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Имя*</label>
+                            <input type="text" name="first_name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Отчество</label>
+                        <input type="text" name="middle_name">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Номер телефона*</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email*</label>
+                            <input type="email" name="email" value="{{ user.email }}" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-card">
+                    <h3>2. Способ доставки</h3>
+                    <label class="delivery-option">
+                        <input type="radio" name="shipping_method" value="pickup" required>
+                        <span>СДЭК до ПВЗ</span>
+                        <small>Получение в пункте выдачи</small>
+                    </label>
+                    <label class="delivery-option">
+                        <input type="radio" name="shipping_method" value="courier">
+                        <span>Курьером СДЭК</span>
+                        <small>Доставка до двери</small>
+                    </label>
+                </div>
+                
+                <div class="form-card">
+                    <h3>3. Адрес доставки</h3>
+                    <div class="form-group">
+                        <label>Страна</label>
+                        <input type="text" name="country" value="Россия" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Город</label>
+                        <input type="text" name="city" placeholder="Начните вводить название...">
+                    </div>
+                    <div class="form-group">
+                        <label>ПВЗ</label>
+                        <input type="text" name="pickup_point" placeholder="Сначала выберите город">
+                    </div>
+                </div>
+                
+                <div class="form-card agreements">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="agreement" required>
+                        <span>Я принимаю условия <a href="#">Пользовательского соглашения (Фирмы)</a></span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="personal_data" required>
+                        <span>Я согласен на обработку моих персональных данных</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="marketing">
+                        <span>Я даю согласие на получение рекламных материалов</span>
+                    </label>
+                    <p class="agreement-link">С текстом согласия можно ознакомиться <a href="#">здесь</a></p>
+                </div>
+                
+                <button type="submit" class="btn-submit-full">Оплатить</button>
+            </form>
+        </div>
+        
+        <div class="checkout-summary-col">
+            <div class="order-summary-card">
+                <h3>Ваш заказ</h3>
+                {% for item in cart %}
+                <div class="order-item">
+                    <span>{{ item.product.name }}</span>
+                    <span>{{ item.total_price }} ₽</span>
+                </div>
+                {% endfor %}
+                
+                <div class="summary-total-row">
+                    <span>Итого</span>
+                    <span>{{ cart.get_total_price }} ₽</span>
+                </div>
+            </div>
+            
+            <div class="payment-info-card">
+                <p>БЕЗОПАСНАЯ ОПЛАТА T-BANK</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

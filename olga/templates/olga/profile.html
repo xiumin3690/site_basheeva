@@ -1,0 +1,47 @@
+{% extends 'olga/base.html' %}
+
+{% block title %}Личный кабинет - MEN'S STORE{% endblock %}
+
+{% block content %}
+<div class="profile-page">
+    <h2>Личный кабинет</h2>
+    <p class="welcome-text">Добро пожаловать, <strong>{{ user.username }}</strong>!</p>
+    
+    <h3>Мои заказы</h3>
+    {% if orders %}
+        <div class="orders-table-wrapper">
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>№ заказа</th>
+                        <th>Дата</th>
+                        <th>Сумма</th>
+                        <th>Статус</th>
+                        <th>Оплата</th>
+                        <th>Доставка</th>
+                        <th>Адрес</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order.order_number }}</a></td>
+                            <td>{{ order.registration_date|date:"d.m.Y" }}</a></td>
+                            <td>{{ order.order_amount }} ₽</a></td>
+                            <td class="status-{{ order.order_status }}">{{ order.get_order_status_display }}</a></td>
+                            <td>{{ order.get_payment_method_display }}</a></td>
+                            <td>{{ order.get_shipping_method_display }}</a></td>
+                            <td>{{ order.delivery_address|truncatechars:30 }}</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="empty-orders">
+            <p>У вас пока нет заказов.</p>
+            <a href="{% url 'olga:product_list' %}" class="btn-primary">Перейти в каталог</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

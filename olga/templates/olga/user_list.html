@@ -1,0 +1,33 @@
+{% extends 'olga/base.html' %}
+
+{% block title %}Пользователи{% endblock %}
+
+{% block content %}
+<h1>Пользователи</h1>
+<a href="{% url 'olga:user_create' %}" class="btn btn-primary">Добавить пользователя</a>
+
+{% if users %}
+    <table class="users-table">
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Email</th>
+                <th>Телефон</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone_number }}</td>
+                    <td><a href="{% url 'olga:user_detail' user.pk %}">Подробнее</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Пользователи не найдены</p>
+{% endif %}
+{% endblock %}

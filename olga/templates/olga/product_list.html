@@ -1,0 +1,81 @@
+{% extends 'olga/base.html' %}
+{% load static %}
+
+{% block title %}Каталог - MEN'S STORE{% endblock %}
+
+{% block content %}
+<div class="catalog-page">
+    <div class="catalog-header">
+        <h2>Каталог</h2>
+        <div class="catalog-controls">
+            <form method="get" class="search-form">
+                <input type="text" name="search" placeholder="Поиск" value="{{ request.GET.search|default:'' }}">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <select name="sort" onchange="this.form.submit()" class="sort-select" form="catalogFilterForm">
+                <option value="">СОРТИРОВАТЬ ПО: По умолчанию</option>
+                <option value="price_asc" {% if request.GET.sort == 'price_asc' %}selected{% endif %}>Цена: по возрастанию</option>
+                <option value="price_desc" {% if request.GET.sort == 'price_desc' %}selected{% endif %}>Цена: по убыванию</option>
+                <option value="name_asc" {% if request.GET.sort == 'name_asc' %}selected{% endif %}>Название: А-Я</option>
+            </select>
+        </div>
+    </div>
+    
+    <form id="catalogFilterForm" method="get">
+        <input type="hidden" name="search" value="{{ request.GET.search }}">
+        <input type="hidden" name="category" value="{{ request.GET.category }}">
+    </form>
+    
+    <div class="catalog-with-filter">
+        <div class="filters-sidebar">
+            <h3>Фильтр по категориям</h3>
+            <ul class="category-filter">
+                <li><a href="{% url 'olga:product_list' %}" class="{% if not request.GET.category %}active{% endif %}">Все</a></li>
+                {% for cat in categories %}
+                    <li><a href="?category={{ cat.id }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" class="{% if request.GET.category == cat.id|stringformat:'s' %}active{% endif %}">{{ cat.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="products-grid-catalog">
+            {% for product in products %}
+                <div class="product-card-catalog">
+                    <a href="{% url 'olga:product_detail' product.pk %}">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                            <div class="no-image">Нет изображения</div>
+                        {% endif %}
+                        <h3>{{ product.name }}</h3>
+                        <p class="price">{{ product.price }} ₽</p>
+                    </a>
+                    <button class="btn-add-to-cart" data-id="{{ product.id }}">
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+                </div>
+            {% empty %}
+                <p class="empty-message">Товары не найдены</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    {% if is_paginated %}
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">«</a>
+            <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">‹</a>
+        {% endif %}
+        <span>{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">›</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">»</a>
+        {% endif %}
+    </div>
+    {% endif %}
+    
+    <div class="cookie-notice">
+        <p>МЫ ИСПОЛЬЗУЕМ COOKIE</p>
+        <a href="#">Подробнее о том, как мы используем данные cookies.</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  # Сервис с Django приложением
+  web:
+    build: .                    # Собираем образ из Dockerfile в текущей папке
+    container_name: django_app  # Имя контейнера
+    volumes:
+      - .:/app                  # Монтируем текущую папку в /app (для разработки)
+    expose:
+      - "8000"                  # Открываем порт 8000 внутри сети Docker
+
+  # Сервис с веб-сервером Caddy (обратный прокси и HTTPS)
+  caddy:
+    image: caddy:latest         # Используем официальный образ Caddy
+    container_name: caddy_server
+    ports:
+      - "80:80"                 # Пробрасываем HTTP порт наружу
+      - "443:443"               # Пробрасываем HTTPS порт наружу
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile  # Подключаем конфиг Caddy
+    depends_on:
+      - web                     # Запускается после web

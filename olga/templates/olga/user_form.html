@@ -1,0 +1,40 @@
+{% extends 'olga/base.html' %}
+
+{% block title %}
+    {% if form.instance.pk %}Редактирование пользователя{% else %}Добавление пользователя{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1>{% if form.instance.pk %}Редактирование пользователя{% else %}Добавление пользователя{% endif %}</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">ФИО</label>
+            {{ form.name }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.phone_number.id_for_label }}">Номер телефона</label>
+            {{ form.phone_number }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.address.id_for_label }}">Адрес</label>
+            {{ form.address }}
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary"> Сохранить</button>
+            <a href="{% url 'olga:user_list' %}" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

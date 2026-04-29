@@ -1,0 +1,57 @@
+{% extends 'olga/base.html' %}
+
+{% block title %}Корзина - MEN'S STORE{% endblock %}
+
+{% block content %}
+<div class="cart-page">
+    <h2>Корзина</h2>
+    
+    {% if cart|length == 0 %}
+        <div class="empty-cart">
+            <p>Ваша корзина пуста</p>
+            <a href="{% url 'olga:product_list' %}" class="btn-primary">Продолжить покупки</a>
+        </div>
+    {% else %}
+        <div class="cart-info">
+            <span class="cart-count">{{ cart|length }} товара</span>
+        </div>
+        
+        {% for item in cart %}
+        <div class="cart-item">
+            <div class="cart-item-info">
+                <h3>{{ item.product.name }}</h3>
+                <div class="cart-item-meta">
+                    <span class="item-size">S</span>
+                    <span class="item-shipping">ОТПРАВКА {{ item.product.quantity|default:"15" }} РАБОЧИХ ДНЕЙ</span>
+                </div>
+            </div>
+            <div class="cart-item-controls">
+                <div class="quantity-control">
+                    <button class="qty-minus" data-id="{{ item.product.id }}">-</button>
+                    <span class="qty-value">{{ item.quantity }}</span>
+                    <button class="qty-plus" data-id="{{ item.product.id }}">+</button>
+                </div>
+                <div class="cart-item-price">{{ item.total_price }} ₽</div>
+                <a href="{% url 'olga:cart_remove' item.product.id %}" class="remove-item">✕</a>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Товары</span>
+                <span>{{ cart.get_total_price }} ₽</span>
+            </div>
+            <div class="summary-row total">
+                <span>Итого</span>
+                <span>{{ cart.get_total_price }} ₽</span>
+            </div>
+        </div>
+        
+        <div class="cart-buttons">
+            <a href="{% url 'olga:product_list' %}" class="btn-secondary">В корзину</a>
+            <a href="{% url 'olga:checkout' %}" class="btn-primary">Оформить</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

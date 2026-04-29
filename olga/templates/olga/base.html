@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}MEN'S STORE{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'olga/css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="{% url 'olga:index' %}">MEN'S STORE</a>
+            </div>
+            <div class="header-actions">
+                <a href="{% url 'olga:cart_detail' %}" class="cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </a>
+                {% if user.is_authenticated %}
+                    <div class="user-dropdown">
+                        <button class="user-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="{% url 'olga:profile' %}">Личный кабинет</a>
+                            <a href="{% url 'olga:logout' %}">Выйти</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <a href="{% url 'olga:login' %}" class="user-icon-link">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Помощь</h4>
+                    <ul>
+                        <li><a href="#">Доставка и оплата</a></li>
+                        <li><a href="#">Возврат и обмен</a></li>
+                        <li><a href="#">Поддержка</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Документация</h4>
+                    <ul>
+                        <li><a href="#">Публичная оферта</a></li>
+                        <li><a href="#">Политика обработки данных</a></li>
+                        <li><a href="#">Использование файлов cookie</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Обратная связь</h4>
+                    <ul>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">О магазине</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 MEN'S STORE. Все права защищены.</p>
+                <p>Email: info@mensstore.ru</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'olga/js/main.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.btn-add-to-cart, .btn-add-to-cart-large').click(function(e) {
+                e.preventDefault();
+                var productId = $(this).data('id');
+                window.location.href = '/cart/add/' + productId + '/';
+            });
+        });
+    </script>
+</body>
+</html>

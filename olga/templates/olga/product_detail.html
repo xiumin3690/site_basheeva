@@ -1,0 +1,109 @@
+{% extends 'olga/base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} - MEN'S STORE{% endblock %}
+
+{% block content %}
+<div class="product-detail-page">
+    <div class="product-detail-flex">
+        <div class="product-image-col">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-detail-img">
+            {% else %}
+                <div class="no-image">Нет изображения</div>
+            {% endif %}
+        </div>
+        <div class="product-info-col">
+            <h1 class="product-detail-title">{{ product.name }}</h1>
+            <div class="product-detail-price">{{ product.price }} ₽</div>
+            
+            <div class="product-detail-description">
+                <p>{{ product.description|linebreaks }}</p>
+            </div>
+            
+            <div class="product-detail-meta">
+                <p>Категория: <span>{{ product.category.name }}</span></p>
+                <p>В наличии: <span>{{ product.quantity }} шт.</span></p>
+            </div>
+            
+            <div class="product-size-section">
+                <span>РАЗМЕР</span>
+                <div class="size-buttons">
+                    <button class="size-btn">S</button>
+                    <button class="size-btn">M</button>
+                    <button class="size-btn">L</button>
+                    <button class="size-btn">XL</button>
+                </div>
+            </div>
+            
+            <div class="product-quantity-section">
+                <span>КОЛИЧЕСТВО</span>
+                <div class="qty-selector">
+                    <button class="qty-dec">-</button>
+                    <span class="qty-num">1</span>
+                    <button class="qty-inc">+</button>
+                </div>
+            </div>
+            
+            <button class="btn-add-to-cart-large" data-id="{{ product.id }}">
+                Добавить в корзину
+            </button>
+            
+            <div class="product-accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Состав <span>+</span></button>
+                    <div class="accordion-content">
+                        <p>100% хлопок</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Уход <span>+</span></button>
+                    <div class="accordion-content">
+                        <p>Стирать при температуре не выше 30°C, не отбеливать, гладить при температуре до 110°C</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% if related_products %}
+    <div class="related-products-section">
+        <h3>Похожие товары</h3>
+        <div class="related-grid">
+            {% for related in related_products %}
+                <a href="{% url 'olga:product_detail' related.pk %}" class="related-item">
+                    {% if related.image %}
+                        <img src="{{ related.image.url }}" alt="{{ related.name }}">
+                    {% else %}
+                        <div class="no-image-small">Нет фото</div>
+                    {% endif %}
+                    <h4>{{ related.name }}</h4>
+                    <p class="related-price">{{ related.price }} ₽</p>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+document.querySelectorAll('.accordion-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        const content = btn.nextElementSibling;
+        if (content.style.display === 'block') {
+            content.style.display = 'none';
+        } else {
+            content.style.display = 'block';
+        }
+    });
+});
+
+document.querySelectorAll('.size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    });
+});
+</script>
+{% endblock %}

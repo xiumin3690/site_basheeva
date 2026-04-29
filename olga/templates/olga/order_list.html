@@ -1,0 +1,37 @@
+{% extends 'olga/base.html' %}
+
+{% block title %}Заказы{% endblock %}
+
+{% block content %}
+<h1>Заказы</h1>
+<a href="{% url 'olga:order_create' %}" class="btn btn-primary">Создать заказ</a>
+
+{% if orders %}
+    <table class="orders-table">
+        <thead>
+            <tr>
+                <th>№ заказа</th>
+                <th>Пользователь</th>
+                <th>Сумма</th>
+                <th>Статус</th>
+                <th>Дата</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.order_number }}</td>
+                    <td>{{ order.users.name }}</td>
+                    <td>{{ order.order_amount }} ₽</td>
+                    <td>{{ order.get_order_status_display }}</td>
+                    <td>{{ order.registration_date|date:"d.m.Y H:i" }}</td>
+                    <td><a href="{% url 'olga:order_detail' order.pk %}">Детали</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Заказы не найдены</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'olga/base.html' %}
+
+{% block title %}{{ user.name }}{% endblock %}
+
+{% block content %}
+<div class="user-detail">
+    <div class="user-header">
+        <h1>{{ user.name }}</h1>
+        <div class="user-actions">
+            <a href="{% url 'olga:user_update' user.pk %}" class="btn btn-secondary">Редактировать пользователя</a>
+            <a href="{% url 'olga:user_list' %}" class="btn btn-outline">Назад к пользователям</a>
+        </div>
+    </div>
+    
+    <div class="user-info">
+        <div class="info-section">
+            <h3>Контактная информация</h3>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Телефон:</strong> {{ user.phone_number }}</p>
+            <p><strong>Адрес:</strong> {{ user.address }}</p>
+        </div>
+        
+        <div class="info-section">
+            <h3>История заказов</h3>
+            {% if orders %}
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>№ заказа</th>
+                            <th>Дата</th>
+                            <th>Сумма</th>
+                            <th>Статус</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td>{{ order.order_number }}</td>
+                                <td>{{ order.registration_date|date:"d.m.Y" }}</td>
+                                <td>{{ order.order_amount }} ₽</td>
+                                <td class="status-{{ order.order_status }}">{{ order.get_order_status_display }}</td>
+                                <td><a href="{% url 'olga:order_detail' order.pk %}">Подробнее</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="empty">У этого пользователя пока нет заказов.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
