@@ -1,0 +1,781 @@
+[
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "olga",
+    "model": "category"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "olga",
+    "model": "order"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "olga",
+    "model": "product"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "olga",
+    "model": "users"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "cofwtkdsjom8u2mqoz4hi3it7b16uod8",
+  "fields": {
+    "session_data": "eyJjYXJ0Ijp7fX0:1wJ80L:gTNH2ktkkk07R7ZnAxaL9MdAHFefGJ8olW2RQOiI8NQ",
+    "expire_date": "2026-05-16T10:55:25.554Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "vdmiaiqjy71mf3024rkg8wl6ckh4ucc1",
+  "fields": {
+    "session_data": "eyJjYXJ0Ijp7fX0:1wImRa:Y5ihSeaKqhFshY0DiVX7c0E7c9_WgrarHPXXeBpB3OU",
+    "expire_date": "2026-05-15T11:54:06.633Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "xto1gdsule1rwovgs53fdw8f67xc0x0x",
+  "fields": {
+    "session_data": ".eJxVjDsOgzAQRO-yNbLs2PKHMn3OgLzLOjiJIDGmiBB3T5BoaKaY92ZWoFgqtCvoPT5LHGuuX2hVA--SiaEFE4IUUsK2NdDFpQ7dMnPpcr8zOHUY6cnjDvpHHO-ToGmsJaPYFXHQWdymnl_Xwz0dDHEe_mtEr5AVGYySkkRrk_XaGO3YW8MKVbg4Y1Ep56QnZNbGEvpLopSC8rD9AE1YRY8:1wJ87w:8YatXW_V7ibmQZrp08fhOG6IJtR8VMBJkjBpt9-TMd0",
+    "expire_date": "2026-05-16T11:03:16.678Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "zvpipk4dg4wp1bj7pj2s1rggqo1ui4dd",
+  "fields": {
+    "session_data": "eyJjYXJ0Ijp7fX0:1wKiJ6:IkhdKkBDtDnw231d4NYo3eXWSWcj-NP-xA-npx9qacM",
+    "expire_date": "2026-05-20T19:53:20.935Z"
+  }
+},
+{
+  "model": "olga.category",
+  "pk": 1,
+  "fields": {
+    "name": "Футболки и поло",
+    "description": "Классические и современные модели футболок и поло из натуральных тканей. Идеально подходят для повседневной носки, офиса и активного отдыха. В ассортименте представлены изделия из хлопка, полиэстера и смесовых тканей с добавлением эластана для комфортной посадки."
+  }
+},
+{
+  "model": "olga.category",
+  "pk": 2,
+  "fields": {
+    "name": "Джинсы и брюки",
+    "description": "Универсальные джинсы и брюки на любой случай: от классических моделей для офиса до удобных карго для активного отдыха. Используются качественные ткани с добавлением эластана для комфорта и долговечности."
+  }
+},
+{
+  "model": "olga.category",
+  "pk": 3,
+  "fields": {
+    "name": "Верхняя одежда",
+    "description": "Куртки, пуховики и парки для защиты от ветра, дождя и мороза. Используются натуральная кожа, мембранные ткани и качественные утеплители. Подходят для города, активного отдыха и путешествий."
+  }
+},
+{
+  "model": "olga.users",
+  "pk": 1,
+  "fields": {
+    "name": "Башеева Ольга Борисовна",
+    "address": "ул. мокрова",
+    "email": "baseevaolga685@gmail.com",
+    "phone_number": 79397923885
+  }
+},
+{
+  "model": "olga.users",
+  "pk": 2,
+  "fields": {
+    "name": "bob",
+    "address": "",
+    "email": "baseevaolga@gmail.com",
+    "phone_number": 0
+  }
+},
+{
+  "model": "olga.product",
+  "pk": 1,
+  "fields": {
+    "name": "Футболка хлопковая базовая",
+    "price": "1500.00",
+    "category": 1,
+    "quantity": 15,
+    "description": "Состав: 100% хлопок (плотность 180 г/м²)\r\nКлассическая базовая футболка прямого кроя из натурального хлопка высокой плотности. Обеспечивает отличную воздухопроницаемость, не вызывает раздражения, подходит для чувствительной кожи. Усиленные швы и двойная прострочка по низу и воротнику гарантируют долговечность. Футболка не вытягивается после стирки, сохраняет форму и цвет.",
+    "image": "products/футболка.jpg"
+  }
+},
+{
+  "model": "olga.product",
+  "pk": 2,
+  "fields": {
+    "name": "Поло классическое",
+    "price": "2490.00",
+    "category": 1,
+    "quantity": 10,
+    "description": "Состав: 95% хлопок, 5% эластан (ткань пике)\r\nКлассическое поло из фактурного пике. Добавление эластана обеспечивает комфортную посадку по фигуре, не стесняя движений. Воротник на двух пуговицах с прорезями для закрепления. Отлично подходит для повседневной носки и офиса.",
+    "image": "products/поло.jpg"
+  }
+},
+{
+  "model": "olga.product",
+  "pk": 3,
+  "fields": {
+    "name": "Джинсы классические прямые",
+    "price": "4990.00",
+    "category": 2,
+    "quantity": 20,
+    "description": "Классические джинсы прямого кроя средней посадки из плотного денима. Подходят для повседневной носки и офиса с нестрогим дресс-кодом.",
+    "image": "products/джн.jpg"
+  }
+},
+{
+  "model": "olga.product",
+  "pk": 4,
+  "fields": {
+    "name": "Брюки прямого кроя со стрелками",
+    "price": "3990.00",
+    "category": 2,
+    "quantity": 15,
+    "description": "Брюки прямого кроя - эта модель не обтягивает ногу, но и не создает эффект мешковатости, образуя четкую вертикальную линию . Наличие защипов (стрелок) добавляет элегантности, позволяя носить их как с кедами и худи для повседневного образа, так и с рубашкой и лоферами для офиса или встречи",
+    "image": "products/бр_5M3cqNy.jpg"
+  }
+},
+{
+  "model": "olga.product",
+  "pk": 5,
+  "fields": {
+    "name": "Куртка кожаная",
+    "price": "12990.00",
+    "category": 3,
+    "quantity": 10,
+    "description": "Состав: Натуральная кожа \r\nМужская кожаная куртка из натуральной кожи. Толщина кожи 1,2 мм обеспечивает защиту от ветра и лёгкого дождя. Подкладка из натурального хлопка дышит и не создаёт парникового эффекта.",
+    "image": "products/КУР.jpg"
+  }
+},
+{
+  "model": "olga.product",
+  "pk": 6,
+  "fields": {
+    "name": "Джинсовая куртка",
+    "price": "5990.00",
+    "category": 3,
+    "quantity": 15,
+    "description": "Джинсовая куртка в актуальном оверсайз-силуэте. В 2026 году такая модель становится must-have гардероба благодаря универсальности и комфорту. Куртка не сковывает движений, отлично сочетается как с узкими джинсами, так и с трендовыми широкими брюками.",
+    "image": "products/джк.jpg"
+  }
+},
+{
+  "model": "olga.order",
+  "pk": 1,
+  "fields": {
+    "users": 1,
+    "order_number": 1,
+    "order_amount": "1500.00",
+    "order_status": "pending",
+    "registration_date": "2026-04-21T10:36:34.304Z",
+    "payment_method": "cash",
+    "shipping_method": "pickup",
+    "delivery_address": "ул. мокрова",
+    "product": [
+      1
+    ]
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add Category",
+    "content_type": [
+      "olga",
+      "category"
+    ],
+    "codename": "add_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change Category",
+    "content_type": [
+      "olga",
+      "category"
+    ],
+    "codename": "change_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete Category",
+    "content_type": [
+      "olga",
+      "category"
+    ],
+    "codename": "delete_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view Category",
+    "content_type": [
+      "olga",
+      "category"
+    ],
+    "codename": "view_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add User",
+    "content_type": [
+      "olga",
+      "users"
+    ],
+    "codename": "add_users"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change User",
+    "content_type": [
+      "olga",
+      "users"
+    ],
+    "codename": "change_users"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete User",
+    "content_type": [
+      "olga",
+      "users"
+    ],
+    "codename": "delete_users"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view User",
+    "content_type": [
+      "olga",
+      "users"
+    ],
+    "codename": "view_users"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add Product",
+    "content_type": [
+      "olga",
+      "product"
+    ],
+    "codename": "add_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change Product",
+    "content_type": [
+      "olga",
+      "product"
+    ],
+    "codename": "change_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete Product",
+    "content_type": [
+      "olga",
+      "product"
+    ],
+    "codename": "delete_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view Product",
+    "content_type": [
+      "olga",
+      "product"
+    ],
+    "codename": "view_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add Order",
+    "content_type": [
+      "olga",
+      "order"
+    ],
+    "codename": "add_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change Order",
+    "content_type": [
+      "olga",
+      "order"
+    ],
+    "codename": "change_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete Order",
+    "content_type": [
+      "olga",
+      "order"
+    ],
+    "codename": "delete_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view Order",
+    "content_type": [
+      "olga",
+      "order"
+    ],
+    "codename": "view_order"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$RhCwsSfU01W7zfNfI3Ik6S$QEncS8JRx906NLslKa4qkKAQvcCshc5hl1nW6bOYf4M=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "Olga",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-03-17T16:53:38.173Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$qgpqsYlgeTYLa2kQjSah8Q$wnUlH4qKAzGyUD2Zo2IIBNSfAJ7XL83sR0+77A8r8o8=",
+    "last_login": "2026-05-05T11:28:42.191Z",
+    "is_superuser": false,
+    "username": "bob",
+    "first_name": "",
+    "last_name": "",
+    "email": "baseevaolga@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-29T19:53:16.224Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$PCRZOJGZS0bK4Ip4guSyvv$OqFJ3a31CTJkgt0tbloSPmBxYB5LBAPUds2fayvSxVg=",
+    "last_login": "2026-05-01T12:15:46.747Z",
+    "is_superuser": true,
+    "username": "olga",
+    "first_name": "",
+    "last_name": "",
+    "email": "baseevaolga685@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-04-29T22:02:47.280Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
